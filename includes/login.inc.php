@@ -41,7 +41,7 @@ if (isset($_POST['login-submit'])) {
                     $_SESSION['id'] = $row['id'];
                     $_SESSION['userid'] = $row['userid'];
 
-                    header('Location: ../index.php?login=success');
+                    header('Location: ../main.php?login=success');
                     exit();
 
                 }

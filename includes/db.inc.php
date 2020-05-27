@@ -1,9 +1,6 @@
 <?php
 
-$db_servername = 'localhost';
-$db_username = 'root';
-$db_password = '';
-$db_name = 'onlineanonymousmessenger';
+require 'db_info.inc.php';
 
 $conn = mysqli_connect(
     $db_servername,

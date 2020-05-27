@@ -45,7 +45,7 @@
                     <input type="text" name="userid" placeholder="Username">
                     <input type="password" name="userpassword" placeholder="password">
                     <input type="password" name="userpasswordrepeat" placeholder="Reapat password">
-                    <input type="text" name="chatkey" placeholder="Chat key (8 - 128)">
+                    <input type="number" name="chatkey" placeholder="Chat key (8 - 128)">
                     <button type="submit" name="signup-submit"><p>Signup</p></button>
                 </form>
             </div>

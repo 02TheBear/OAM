@@ -19,12 +19,11 @@ if (isset($_POST['signup-submit'])) {
         exit();
     }
 
-    else if (!filter_var($chatkey, FILTER_VALIDATE_INT) &&  strlen($chatkey) > 8 &&  strlen($chatkey) < 255 ) {
-    header('Location: ../signup.php?err=invalidchatkey&userid='.$userid);
-    exit();
+    else if (!filter_var($chatkey, FILTER_VALIDATE_INT) && strlen($chatkey) < 8 && strlen($chatkey) > 255 ) {
+        header('Location: ../signup.php?err=invalidchatkey&userid='.$userid);
+        exit();
     }
     
-
     else if (!preg_match('/^[a-zA-Z0-9_]*$/', $userid)) {
         header('Location: ../signup.php?err=invaliduserid&chatkey='.$chatkey);
         exit();
