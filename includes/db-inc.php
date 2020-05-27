@@ -1,6 +1,6 @@
 <?php
 
-require 'db_info.inc.php';
+require 'db_info-inc.php';
 
 $conn = mysqli_connect(
     $db_servername,

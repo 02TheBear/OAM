@@ -62,7 +62,7 @@
                     <?php
                         if (isset($_SESSION['userid'])) {
                             echo '
-                                <form action="includes/logout.inc.php" method="post">
+                                <form action="includes/logout-inc.php" method="post">
                                     <button type="submit" name="loguot-submit">
                                         <p>Logout</p>
                                     </button>
@@ -71,7 +71,7 @@
                         }
                         else {
                             echo '
-                                <form action="includes/login.inc.php" method="post">
+                                <form action="includes/login-inc.php" method="post">
                                     <input type="text" name="userid" placeholder="Username">
                                     <input type="password" name="userpassword" placeholder="Password">
                                     <button type="submit" name="login-submit">

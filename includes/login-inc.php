@@ -2,7 +2,7 @@
 
 if (isset($_POST['login-submit'])) {
 
-    require 'db.inc.php';
+    require 'db-inc.php';
 
     $userid = $_POST['userid'];
     $userpassword = $_POST['userpassword'];

@@ -41,7 +41,7 @@
                         echo '<p>Signup successful</p>';
                     }
                 ?>
-                <form action="includes/signup.inc.php" method="post">
+                <form action="includes/signup-inc.php" method="post">
                     <input type="text" name="userid" placeholder="Username">
                     <input type="password" name="userpassword" placeholder="password">
                     <input type="password" name="userpasswordrepeat" placeholder="Reapat password">
