@@ -11,14 +11,6 @@
                             echo '<p>You have to fill in all fields</p>';
                         }
 
-                        else if ($_GET['err'] == 'invalidchatkeyanduserid') {
-                            echo '<p>Invalid chatkey and username</p>';
-                        }
-
-                        else if ($_GET['err'] == 'invalidchatkey') {
-                            echo '<p>Invalid chatkey</p>';
-                        }
-
                         else if ($_GET['err'] == 'invaliduserid') {
                             echo '<p>Invalid username</p>';
                         }
@@ -45,7 +37,6 @@
                     <input type="text" name="userid" placeholder="Username">
                     <input type="password" name="userpassword" placeholder="password">
                     <input type="password" name="userpasswordrepeat" placeholder="Reapat password">
-                    <input type="number" name="chatkey" placeholder="Chat key (8 - 128)">
                     <button type="submit" name="signup-submit"><p>Signup</p></button>
                 </form>
             </div>

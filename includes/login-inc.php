@@ -8,12 +8,12 @@ if (isset($_POST['login-submit'])) {
     $userpassword = $_POST['userpassword'];
 
     if (empty($userid) || empty($userpassword)) {
-        header('Location: ../index.php?err=emptyfields&userid='.$userid);
+        header('Location: ../chats.php?err=emptyfields&userid='.$userid);
         exit();
     }
 
     else if (!preg_match('/^[a-zA-Z0-9_]*$/', $userid)) {
-        header('Location: ../index.php?err=invaliduserid');
+        header('Location: ../chats.php?err=invaliduserid');
         exit();
     }
 
@@ -22,18 +22,17 @@ if (isset($_POST['login-submit'])) {
         $sql = 'SELECT * FROM users WHERE userid=?';
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)){
-            header('Location: ../index.php?err=sqlerr1');
+            header('Location: ../chats.php?err=sqlerr1');
             exit();
         }
         else {
-            /*$hacheduserid = password_hash($userid, PASSWORD_DEFAULT);*/
             mysqli_stmt_bind_param($stmt, 's', $userid);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             if ($row = mysqli_fetch_assoc($result))  {
                 $userpasswordcheck = password_verify($userpassword, $row['userpassword']);
                 if ($userpasswordcheck == false) {
-                    header('Location: ../index.php?err=incorectuserpassword');
+                    header('Location: ../chats.php?err=incorectuserpassword');
                 exit();
                 }
                 else if ($userpasswordcheck == true) {
@@ -46,12 +45,12 @@ if (isset($_POST['login-submit'])) {
 
                 }
                 else {
-                    header('Location: ../index.php?err=unknown');
+                    header('Location: ../chats.php?err=unknown');
                     exit();
                 }
             }
             else{
-                header('Location: ../index.php?err=unuseduser');
+                header('Location: ../chats.php?err=unuseduser');
                 exit();
             }
         }
@@ -61,6 +60,6 @@ if (isset($_POST['login-submit'])) {
 
 }
 else  {
-    header('Location: ../index.php?err=why');
+    header('Location: ../chats.php?err=why');
     exit();
 }
