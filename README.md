@@ -56,9 +56,7 @@ These environment variables need to be set (except the ones which have defaults)
 
 ## Other requirements
 
-- There should be a limit of available spots per activity
-- Students who are registering for **bowling** should be able to select if they want food or not
-
+- 
 ## Contributing
 
 Feel free to open an issue or send in a pull request. All code should be formatted using [black](https://github.com/psf/black). This project uses the semantic versioning convention, see [CHANGELOG.md](CHANGELOG.md) for more information.
