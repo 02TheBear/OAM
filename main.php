@@ -13,7 +13,6 @@
                     echo '
                         <p>Loged out!</p>
                     ';/*loged out*/
-                    /*header('Location: index.php?err=notlogedin');*/
                 }
             ?>
         </main>
