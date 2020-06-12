@@ -13,7 +13,7 @@ if (isset($_POST['signup-submit'])) {
         exit();
     }
     
-    else if (!preg_match('/^[a-zA-Z0-9_]*$/', $userid)) {
+    else if (!preg_match('/^[a-zA-Z0-9_]*$/', $userid) || strlen($userid) < 511 || strlen($userpassword) < 511 ) {
         header('Location: ../signup.php?err=invaliduserid');
         exit();
     }
