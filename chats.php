@@ -4,65 +4,66 @@
 
         <main>
             <?php
-                if (isset($_SESSION['userid'])) {
+                
 
-                    if (){
-                        echo'
-                            <ul>
-                        ';
+                $sql = 'SELECT * FROM messages WHERE chatid=?';
+                $stmt = mysqli_stmt_init($conn);
+                if (!mysqli_stmt_prepare($stmt, $sql)){
+                    header('Location: ../signup.php?err=sqlerr1');
+                    exit();
+                }
+                else {
+                    mysqli_stmt_bind_param($stmt, 's', $userid);
+                    mysqli_stmt_execute($stmt);
+                    mysqli_stmt_store_result($stmt);
+                    $resultcheck = mysqli_stmt_num_rows($stmt);
 
-                        $sql = 'SELECT * FROM users WHERE userid=?';
+                    if ($resultcheck > 0) {
+                        header('Location: ../signup.php?err=useridtaken'); 
+                        exit();
+                    }
+
+                    else{
+                        $sql = "INSERT INTO users (userid, userpassword) VALUES (?, ?)";
                         $stmt = mysqli_stmt_init($conn);
-                        if (!mysqli_stmt_prepare($stmt, $sql)){
-                            header('Location: ../index.php?err=sqlerr1');
+
+                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                            header('Location: ../signup.php?err=sqlerr2');
                             exit();
-                        }§
-                        else {
-                            mysqli_stmt_bind_param($stmt, 's ', $userid);
-                            mysqli_stmt_execute($stmt);
-                            $result = mysqli_stmt_get_result($stmt);
-                            if ($row = mysqli_fetch_assoc($result))  {
-                                $userid = password_verify($userpassword, $row['userpassword']);
-                                if ($userpasswordcheck == false) {
-                                    header('Location: ../index.php?err=incorectuserpassword');
-                                exit();
-                                }
-                                else if ($userpasswordcheck == true) {
-                                    session_start();
-                                    $_SESSION['id'] = $row['id'];
-                                    $_SESSION['userid'] = $row['userid'];
-
-                                    header('Location: ../main.php?login=success');
-                                    exit();
-
-                                }
-                                else {
-                                    header('Location: ../index.php?err=unknown');
-                                    exit();
-                                }
-                            }
-                            else{
-                                header('Location: ../index.php?err=unuseduser');
-                                exit();
-                            }
                         }
-                        
-                        
+                        else {
+                            $hacheduserpassword = password_hash($userpassword, PASSWORD_DEFAULT);
+
+                            mysqli_stmt_bind_param($stmt, 'ss', $userid, $hacheduserpassword);
+                            mysqli_stmt_execute($stmt);
+                            mysqli_stmt_store_result($stmt);
+                            header('Location: ../signup.php?signup=success');
+                            exit();
+                        }
+                    }
+                }
+
+                for
+                    for
+                        if
+
+
+                if () {
+                    echo'
+                        <ul>
+                    ';
+                    if (){
                         echo'
                             <a href="">
                                 <li>
                                     <div>
-                                        <p><!--alias--></p>
+                                        <p> .  . </p><!--alias-->
                                     </div>
                                     <div>
-                                        <p><!--Message--></p>
+                                        <p> .  . </p><!--Message-->
                                     </div>
                                 </li>
                             </a>
-                        ';
-                        
-                        echo'
-                            </ul>
                         ';
                     }
                     else {
@@ -71,13 +72,17 @@
                                 <p>No chats found</p>
                             </div>  
                         ';
-                    }                    
-                    /*Loged in*/
+                        exit();
+                    }
+                    echo'
+                        </ul>
+                    ';
                 }
+                /*Loged in*/
                 else {
                     header('Location: index.php?err=notlogedin');
-                    /*loged out*/
-                }
+                    
+                }/*loged out*/
             ?>
         </main>
 
